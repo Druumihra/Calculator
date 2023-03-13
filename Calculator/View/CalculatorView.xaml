@@ -1,0 +1,51 @@
+﻿<Window x:Class="Calculator.View.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Calculator"
+        xmlns:local="clr-namespace:Calculator.View"
+        mc:Ignorable="d"
+        Title="Calculator" Height="800" Width="400">
+    <Window.Resources>
+        <vm:CalcViewModel x:Key="myData"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource myData}">
+        <Grid.RowDefinitions>
+        <RowDefinition Height="1.5*"/>
+        <RowDefinition/>
+        <RowDefinition/>
+        <RowDefinition/>
+        <RowDefinition/>
+        <RowDefinition/>
+        </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="4" Text="{Binding CurrentNumber}" Style="{StaticResource Screen}"></TextBlock>
+        <Button Grid.Column="0" Content="AC" Style="{StaticResource Extra}" Grid.Row="1"/>
+        <Button Grid.Column="1" Content="+/-" Style="{StaticResource Extra}" Grid.Row="1"/>
+        <Button Grid.Column="2" Content="%" Style="{StaticResource Extra}" Grid.Row="1"/>
+        
+        <Button Grid.Column="3" Content="/" Style="{StaticResource Operator}" Grid.Row="1"/>
+        <Button Grid.Column="3" Content="*" Style="{StaticResource Operator}" Grid.Row="2"/>
+        <Button Grid.Column="3" Content="-" Style="{StaticResource Operator}" Grid.Row="3"/>
+        <Button Grid.Column="3" Content="+" Style="{StaticResource Operator}" Grid.Row="4"/>
+        <Button Grid.Column="3" Content="=" Style="{StaticResource Operator}" Grid.Row="5"/>
+        
+        <Button Grid.Column="0" Content="7" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="7" Grid.Row="2"/>
+        <Button Grid.Column="1" Content="8" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="8" Grid.Row="2"/>
+        <Button Grid.Column="2" Content="9" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="9" Grid.Row="2"/>
+        <Button Grid.Column="0" Content="4" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="4" Grid.Row="3"/>
+        <Button Grid.Column="1" Content="5" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="5" Grid.Row="3"/>
+        <Button Grid.Column="2" Content="6" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="6" Grid.Row="3"/>
+        <Button Grid.Column="0" Content="1" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="1" Grid.Row="4"/>
+        <Button Grid.Column="1" Content="2" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="2" Grid.Row="4"/>
+        <Button Grid.Column="2" Content="3" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="3" Grid.Row="4"/>
+        <Button Grid.Column="0" Content="0" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="0" Grid.Row="5" Grid.ColumnSpan="2"/>
+        <Button Grid.Column="2" Content="." Style="{StaticResource Number}" Grid.Row="5"/>
+    </Grid>
+</Window>
