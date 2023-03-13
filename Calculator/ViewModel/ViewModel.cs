@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -34,8 +35,18 @@ namespace Calculator
         [RelayCommand]
         public void addNumber(string number)
         {
+            if (isDecimal)
+            {
+                string str = CurrentNumber.ToString();
+                if (!str.Contains(NumberFormatInfo.CurrentInfo.NumberDecimalSeparator))
+                    str += NumberFormatInfo.CurrentInfo.NumberDecimalSeparator;
+                CurrentNumber = decimal.Parse(str + number);
+            }
+            else
+            {
             CurrentNumber *= 10;
             CurrentNumber += decimal.Parse(number);
+            }
         }
 
 
@@ -65,5 +76,68 @@ namespace Calculator
 
         }
 
+        [RelayCommand]
+        public void clear()
+        {
+            CurrentNumber = 0;
+            firstNumber = null;
+            currentOperator = null;
+        }
+
+        [RelayCommand]
+        public void inverse()
+        {
+            CurrentNumber = -CurrentNumber;
+        }
+
+        [RelayCommand]
+        public void decimalClick() 
+        {
+            isDecimal = true;
+        }
+
+        [RelayCommand]
+        public void percentageClick()
+        {
+            if (firstNumber is null || currentOperator is null) return;
+
+            switch (currentOperator)
+            {
+                case Operator.Addition:
+                    CurrentNumber = (decimal)(firstNumber + CurrentNumber / 100 * firstNumber);
+                    break;
+                case Operator.Subtraction:
+                    CurrentNumber = (decimal)(firstNumber - CurrentNumber / 100 * firstNumber);
+                    break;
+                case Operator.Multiplication:
+                    CurrentNumber = (decimal)(firstNumber * CurrentNumber / 100);
+                    break;
+                case Operator.Division:
+                    CurrentNumber = (decimal)(firstNumber / CurrentNumber * 100);
+                    break;
+            }
+        }
+
+        [RelayCommand]
+        public void compute()
+        {
+            if (firstNumber == null) return;
+
+            switch (currentOperator)
+            {
+                case Operator.Addition:
+                    CurrentNumber = (decimal)(firstNumber + CurrentNumber);
+                    break;
+                case Operator.Subtraction:
+                    CurrentNumber = (decimal)(firstNumber - CurrentNumber);
+                    break;
+                case Operator.Multiplication:
+                    CurrentNumber = (decimal)(firstNumber * CurrentNumber);
+                    break;
+                case Operator.Division:
+                    CurrentNumber = (decimal)(firstNumber / CurrentNumber);
+                    break;
+            }
+        }
     }
 }

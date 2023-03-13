@@ -26,16 +26,17 @@
         <ColumnDefinition/>
     </Grid.ColumnDefinitions>
         <TextBlock Grid.ColumnSpan="4" Text="{Binding CurrentNumber}" Style="{StaticResource Screen}"></TextBlock>
-        <Button Grid.Column="0" Content="AC" Style="{StaticResource Extra}" Grid.Row="1"/>
-        <Button Grid.Column="1" Content="+/-" Style="{StaticResource Extra}" Grid.Row="1"/>
-        <Button Grid.Column="2" Content="%" Style="{StaticResource Extra}" Grid.Row="1"/>
+        <Button Grid.Column="0" Content="AC" Style="{StaticResource Extra}" Command="{Binding clearCommand}" Grid.Row="1"/>
+        <Button Grid.Column="1" Content="+/-" Style="{StaticResource Extra}" Command="{Binding inverseCommand}" Grid.Row="1"/>
+        <Button Grid.Column="2" Content="%" Style="{StaticResource Extra}" Command="{Binding percentageClickCommand}" Grid.Row="1"/>
         
-        <Button Grid.Column="3" Content="/" Style="{StaticResource Operator}" Grid.Row="1"/>
-        <Button Grid.Column="3" Content="*" Style="{StaticResource Operator}" Grid.Row="2"/>
-        <Button Grid.Column="3" Content="-" Style="{StaticResource Operator}" Grid.Row="3"/>
-        <Button Grid.Column="3" Content="+" Style="{StaticResource Operator}" Grid.Row="4"/>
+        <Button Grid.Column="3" Content="/" Style="{StaticResource Operator}" Command="{Binding operatorClickCommand}" CommandParameter="/" Grid.Row="1"/>
+        <Button Grid.Column="3" Content="*" Style="{StaticResource Operator}" Command="{Binding operatorClickCommand}" CommandParameter="*" Grid.Row="2"/>
+        <Button Grid.Column="3" Content="-" Style="{StaticResource Operator}" Command="{Binding operatorClickCommand}" CommandParameter="-" Grid.Row="3"/>
+        <Button Grid.Column="3" Content="+" Style="{StaticResource Operator}" Command="{Binding operatorClickCommand}" CommandParameter="+" Grid.Row="4"/>
+        
         <Button Grid.Column="3" Content="=" Style="{StaticResource Operator}" Grid.Row="5"/>
-        
+
         <Button Grid.Column="0" Content="7" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="7" Grid.Row="2"/>
         <Button Grid.Column="1" Content="8" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="8" Grid.Row="2"/>
         <Button Grid.Column="2" Content="9" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="9" Grid.Row="2"/>
@@ -46,6 +47,6 @@
         <Button Grid.Column="1" Content="2" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="2" Grid.Row="4"/>
         <Button Grid.Column="2" Content="3" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="3" Grid.Row="4"/>
         <Button Grid.Column="0" Content="0" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="0" Grid.Row="5" Grid.ColumnSpan="2"/>
-        <Button Grid.Column="2" Content="." Style="{StaticResource Number}" Grid.Row="5"/>
+        <Button Grid.Column="2" Content="." Style="{StaticResource Number}" Command="{Binding decimalClickCommand}"  Grid.Row="5"/>
     </Grid>
 </Window>
