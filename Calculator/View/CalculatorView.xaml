@@ -35,7 +35,7 @@
         <Button Grid.Column="3" Content="-" Style="{StaticResource Operator}" Command="{Binding operatorClickCommand}" CommandParameter="-" Grid.Row="3"/>
         <Button Grid.Column="3" Content="+" Style="{StaticResource Operator}" Command="{Binding operatorClickCommand}" CommandParameter="+" Grid.Row="4"/>
         
-        <Button Grid.Column="3" Content="=" Style="{StaticResource Operator}" Grid.Row="5"/>
+        <Button Grid.Column="3" Content="=" Style="{StaticResource Operator}" Command="{Binding computeCommand}" Grid.Row="5"/>
 
         <Button Grid.Column="0" Content="7" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="7" Grid.Row="2"/>
         <Button Grid.Column="1" Content="8" Style="{StaticResource Number}" Command="{Binding addNumberCommand}" CommandParameter="8" Grid.Row="2"/>

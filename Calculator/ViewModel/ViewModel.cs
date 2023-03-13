@@ -127,15 +127,19 @@ namespace Calculator
             {
                 case Operator.Addition:
                     CurrentNumber = (decimal)(firstNumber + CurrentNumber);
+                    firstNumber = null;
                     break;
                 case Operator.Subtraction:
                     CurrentNumber = (decimal)(firstNumber - CurrentNumber);
+                    firstNumber = null;
                     break;
                 case Operator.Multiplication:
                     CurrentNumber = (decimal)(firstNumber * CurrentNumber);
+                    firstNumber = null;
                     break;
                 case Operator.Division:
                     CurrentNumber = (decimal)(firstNumber / CurrentNumber);
+                    firstNumber = null;
                     break;
             }
         }
